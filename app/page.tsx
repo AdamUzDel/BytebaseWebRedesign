@@ -7,7 +7,6 @@ import RequestQuote from '@/components/RequestQuote'
 import CustomerOpinions from '@/components/CustomerOpinions'
 import LatestBlogPosts from '@/components/LatestBlogPosts'
 import Contact from '@/components/Contact'
-import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
@@ -21,7 +20,6 @@ export default function Home() {
       <CustomerOpinions />
       <LatestBlogPosts />
       <Contact />
-      <Footer />
     </main>
   )
 }
