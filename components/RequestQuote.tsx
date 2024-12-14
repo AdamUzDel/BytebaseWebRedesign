@@ -55,7 +55,7 @@ export default function RequestQuote() {
             Request a Quote
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Ready to start your project? Fill out the form below and we'll get back to you with a custom quote.
+            Ready to start your project? Fill out the form below and we&apos;ll get back to you with a custom quote.
           </p>
         </motion.div>
         <motion.div
@@ -67,8 +67,8 @@ export default function RequestQuote() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="p-6 md:p-10 bg-gradient-to-br from-teal-500 to-cyan-500 text-white flex flex-col justify-between">
               <div>
-                <h3 className="text-3xl font-bold mb-6">Let's Create Something Amazing</h3>
-                <p className="mb-8">Our team of experts is ready to bring your vision to life. Whether you need a stunning website, a powerful mobile app, or a complete branding overhaul, we've got you covered.</p>
+                <h3 className="text-3xl font-bold mb-6">Let&apos;s Create Something Amazing</h3>
+                <p className="mb-8">Our team of experts is ready to bring your vision to life. Whether you need a stunning website, a powerful mobile app, or a complete branding overhaul, we&apos;ve got you covered.</p>
                 <ul className="space-y-4">
                   <li className="flex items-center">
                     <Check className="mr-2" /> Custom Solutions

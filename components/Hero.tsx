@@ -3,16 +3,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Rocket, ChevronDown } from 'lucide-react';
+import { ArrowRight, Rocket } from 'lucide-react';
 import Link from "next/link";
 
 const Hero = () => {
-  const scrollToNextSection = () => {
+  /* const scrollToNextSection = () => {
     window.scrollTo({
       top: window.innerHeight,
       behavior: 'smooth'
     });
-  };
+  }; */
 
   return (
     <section className="relative bg-gray-900 text-white min-h-[100vh] md:min-h-[80vh] flex items-center justify-center px-4 md:px-8 overflow-hidden">
@@ -61,7 +61,7 @@ const Hero = () => {
           }}
         >
           At BytebaseTech, we design innovative web apps, branding solutions,
-          and digital tools to transform your ideas into reality. Let's build the future together.
+          and digital tools to transform your ideas into reality. Let&apos;s build the future together.
         </motion.p>
 
         {/* Call-to-Actions */}

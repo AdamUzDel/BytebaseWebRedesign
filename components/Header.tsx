@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Menu, X } from 'lucide-react'
+import Image from 'next/image'
 
 const navItems = [
   { name: 'Home', href: '/' },
@@ -37,7 +38,8 @@ const Header = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold">
+          <Link href="/" className="text-2xl font-bold flex items-center gap-4">
+          <Image src={"/logo-white.png"} alt="logo" width={60} height={60} />
             <h3 className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400">
               BytebaseTech
             </h3>

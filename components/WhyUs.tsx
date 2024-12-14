@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Zap, Users, Code, ArrowRight } from 'lucide-react'
+import { Zap, Users, Code } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 
 const features = [

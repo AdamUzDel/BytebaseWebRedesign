@@ -48,7 +48,7 @@ export default function Contact() {
             Contact Us
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            We'd love to hear from you. Get in touch with us for any inquiries or collaborations.
+            We&apos;d love to hear from you. Get in touch with us for any inquiries or collaborations.
           </p>
         </motion.div>
         <div className="flex flex-wrap -mx-4">
@@ -129,7 +129,7 @@ export default function Contact() {
               className="bg-white rounded-2xl shadow-xl p-8 md:p-12"
             >
               <h3 className="text-2xl font-bold mb-6 text-gray-800">Get in Touch</h3>
-              <p className="text-gray-600 mb-8">We're here to help and answer any question you might have. We look forward to hearing from you.</p>
+              <p className="text-gray-600 mb-8">We&apos;re here to help and answer any question you might have. We look forward to hearing from you.</p>
               <div className="space-y-6">
                 <div className="flex items-start">
                   <MapPin className="w-6 h-6 text-teal-500 mr-4 mt-1" />

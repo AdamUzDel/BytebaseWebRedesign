@@ -60,7 +60,7 @@ export default function CustomerOpinions() {
 
   useEffect(() => {
     startAnimation()
-  }, [])
+  }, [startAnimation])
 
   const handleHoverStart = () => setIsHovered(true)
   const handleHoverEnd = () => setIsHovered(false)
@@ -71,7 +71,7 @@ export default function CustomerOpinions() {
     } else {
       startAnimation()
     }
-  }, [isHovered, controls])
+  }, [startAnimation, isHovered, controls])
 
   return (
     <section className="py-12 md:py-16 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
@@ -86,7 +86,7 @@ export default function CustomerOpinions() {
             What Our Customers Say
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Don't just take our word for it. Here's what our clients have to say about working with BytebaseTech.
+            Don&apos;t just take our word for it. Here&apos;s what our clients have to say about working with BytebaseTech.
           </p>
         </motion.div>
         <div 
