@@ -40,7 +40,7 @@ export default function Footer() {
             <h4 className="text-xl font-semibold mb-6">Contact</h4>
             <ul className="space-y-3">
               <li className="flex items-start">
-                <MapPin size={20} className="mr-2 mt-1 text-teal-400" />
+                <MapPin size={20} className="mr-2 text-teal-400" />
                 <span className="text-gray-300">First Floor, Room J-406 Nasser Business Center Building, Nasser Rd, Kampala - Uganda</span>
               </li>
               <li className="flex items-center">

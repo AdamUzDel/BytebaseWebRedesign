@@ -20,7 +20,7 @@ const Hero = () => {
       <div className="relative z-10 max-w-4xl text-center space-y-8">
         {/* Headline */}
         <motion.h1
-          className="text-4xl md:text-6xl font-bold tracking-tight leading-tight"
+          className="text-4xl md:text-6xl mt-10 md:mt-16 font-bold tracking-tight leading-tight"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -29,7 +29,7 @@ const Hero = () => {
             delay: 0.2,
           }}
         >
-          Empower Your Business with{" "}
+          Driving Digital Innovation for{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400 inline-block">
             <motion.span
               className="text-teal-400"
@@ -43,9 +43,9 @@ const Hero = () => {
                 repeatDelay: 5
               }}
             >
-              Cutting-Edge
+              Businesses in Uganda
             </motion.span>{" "}
-            Digital Solutions
+            and Beyond
           </span>
         </motion.h1>
 

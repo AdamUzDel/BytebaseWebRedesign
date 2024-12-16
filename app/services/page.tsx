@@ -122,12 +122,12 @@ const testimonials = [
 
 const ServicesPage = () => {
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4">
-        <div className="container mx-auto text-center">
+      <section className="relative pt-32 pb-20 px-4">
+        <div className="container mx-auto text-center relative z-10">
           <motion.h1 
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-4xl md:text-6xl md:mt-8 font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -148,7 +148,7 @@ const ServicesPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <Button asChild size="lg" className="bg-teal-500 text-white hover:bg-teal-600">
+            <Button asChild size="lg" className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white">
               <Link href="/quote">Request a Quote</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="text-teal-400 border-teal-400 hover:bg-teal-400 hover:text-white">
@@ -156,27 +156,28 @@ const ServicesPage = () => {
             </Button>
           </motion.div>
         </div>
+        <div className="absolute inset-0 overflow-hidden">
+          <Image
+            src="/placeholder.jpg"
+            alt="Digital Solutions"
+            layout="fill"
+            objectFit="cover"
+            className="opacity-40"
+          />
+        </div>
       </section>
 
-      {/* Web and App Development Section */}
+      {/* Services Overview */}
       <section className="py-20 px-4 bg-gray-800">
         <div className="container mx-auto">
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-8 text-center"
+            className="text-3xl md:text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Web and App Development
+            Our Comprehensive Services
           </motion.h2>
-          <motion.p
-            className="text-xl text-gray-300 mb-12 text-center max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            Create responsive, scalable, and secure websites and apps tailored to your business needs.
-          </motion.p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
               <motion.div
@@ -198,7 +199,7 @@ const ServicesPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <Button asChild size="lg" className="bg-teal-500 text-white hover:bg-teal-600">
+            <Button asChild size="lg" className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white">
               <Link href="/contact">Contact Us for Your Project</Link>
             </Button>
           </motion.div>
@@ -209,7 +210,7 @@ const ServicesPage = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto">
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-8 text-center"
+            className="text-3xl md:text-4xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -245,7 +246,7 @@ const ServicesPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <Button asChild size="lg" className="bg-teal-500 text-white hover:bg-teal-600">
+            <Button asChild size="lg" className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white">
               <Link href="/portfolio">See Our Design Work</Link>
             </Button>
           </motion.div>
@@ -256,7 +257,7 @@ const ServicesPage = () => {
       <section className="py-20 px-4 bg-gray-800">
         <div className="container mx-auto">
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-8 text-center"
+            className="text-3xl md:text-4xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -292,7 +293,7 @@ const ServicesPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <Button asChild size="lg" className="bg-teal-500 text-white hover:bg-teal-600">
+            <Button asChild size="lg" className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white">
               <Link href="/advanced-solutions">Learn More</Link>
             </Button>
           </motion.div>
@@ -303,7 +304,7 @@ const ServicesPage = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto">
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-8 text-center"
+            className="text-3xl md:text-4xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -322,7 +323,11 @@ const ServicesPage = () => {
             {additionalServices.map((service, index) => (
               <motion.div
                 key={index}
-                className="bg-gray-800 p-6 rounded-lg shadow-lg">
+                className="bg-gray-800 p-6 rounded-lg shadow-lg"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
                 <div className="mb-4">{service.icon}</div>
                 <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
                 <p className="text-gray-300">{service.description}</p>
@@ -335,7 +340,7 @@ const ServicesPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <Button asChild size="lg" className="bg-teal-500 text-white hover:bg-teal-600">
+            <Button asChild size="lg" className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white">
               <Link href="/contact">Let&apos;s Talk</Link>
             </Button>
           </motion.div>
@@ -343,27 +348,70 @@ const ServicesPage = () => {
       </section>
 
       {/* Why Choose BytebaseTech Section */}
-      <section className="py-20 px-4 bg-gray-800">
+      <section className="py-20 px-4 bg-gray-900">
         <div className="container mx-auto">
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-8 text-center"
+            className="text-3xl md:text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
             Why Choose BytebaseTech?
           </motion.h2>
-          <motion.ul
-            className="list-disc list-inside text-xl text-gray-300 mb-12 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <li>Expertise in Modern Tech Stacks</li>
-            <li>Commitment to Quality and Innovation</li>
-            <li>Client-Centric Approach</li>
-            <li>Scalable Solutions for Future Growth</li>
-          </motion.ul>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div
+              className="bg-gray-800 p-8 rounded-lg shadow-lg"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <h3 className="text-2xl font-semibold mb-4">Our Expertise</h3>
+              <ul className="space-y-2">
+                <li className="flex items-center">
+                  <Zap className="w-5 h-5 text-teal-500 mr-2" />
+                  Expertise in Modern Tech Stacks
+                </li>
+                <li className="flex items-center">
+                  <Zap className="w-5 h-5 text-teal-500 mr-2" />
+                  Commitment to Quality and Innovation
+                </li>
+                <li className="flex items-center">
+                  <Zap className="w-5 h-5 text-teal-500 mr-2" />
+                  Client-Centric Approach
+                </li>
+                <li className="flex items-center">
+                  <Zap className="w-5 h-5 text-teal-500 mr-2" />
+                  Scalable Solutions for Future Growth
+                </li>
+              </ul>
+            </motion.div>
+            <motion.div
+              className="bg-gray-800 p-8 rounded-lg shadow-lg"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <h3 className="text-2xl font-semibold mb-4">Our Process</h3>
+              <ol className="space-y-2">
+                <li className="flex items-center">
+                  <span className="bg-teal-500 text-white rounded-full w-6 h-6 flex items-center justify-center mr-2">1</span>
+                  Consultation and Requirements Gathering
+                </li>
+                <li className="flex items-center">
+                  <span className="bg-teal-500 text-white rounded-full w-6 h-6 flex items-center justify-center mr-2">2</span>
+                  Planning and Design
+                </li>
+                <li className="flex items-center">
+                  <span className="bg-teal-500 text-white rounded-full w-6 h-6 flex items-center justify-center mr-2">3</span>
+                  Development and Testing
+                </li>
+                <li className="flex items-center">
+                  <span className="bg-teal-500 text-white rounded-full w-6 h-6 flex items-center justify-center mr-2">4</span>
+                  Deployment and Ongoing Support
+                </li>
+              </ol>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -371,7 +419,7 @@ const ServicesPage = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto">
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-12 text-center"
+            className="text-3xl md:text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -408,10 +456,10 @@ const ServicesPage = () => {
       </section>
 
       {/* Footer CTA */}
-      <section className="py-20 px-4 bg-gray-800">
+      <section className="py-20 px-4 bg-gray-900">
         <div className="container mx-auto text-center">
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-6"
+            className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -432,7 +480,7 @@ const ServicesPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <Button asChild size="lg" className="bg-teal-500 text-white hover:bg-teal-600">
+            <Button asChild size="lg" className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white">
               <Link href="/contact">Contact Us</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="text-teal-400 border-teal-400 hover:bg-teal-400 hover:text-white">
