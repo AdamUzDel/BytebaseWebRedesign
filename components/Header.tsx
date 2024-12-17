@@ -35,6 +35,18 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+  
+    return () => {
+      document.body.style.overflow = 'auto'
+    }
+  }, [isMobileMenuOpen])
+
   return (
     <motion.header
       className={`fixed w-full z-50 transition-all duration-300 ${
@@ -93,12 +105,12 @@ const Header = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.nav
-            className="md:hidden fixed top-0 right-0 bottom-0 w-64 bg-gray-900 backdrop-blur-sm p-6 h-full"
+            className="md:hidden fixed top-0 left-0 w-full h-screen bg-gray-900/95 backdrop-blur-lg p-6 z-[60]"
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.3 }}
-          >
+          > 
             <div className="flex justify-end mb-8">
               <Button
                 variant="ghost"

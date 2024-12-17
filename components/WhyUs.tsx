@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Zap, Users, Code } from 'lucide-react'
 import { Button } from "@/components/ui/button"
+import Link from 'next/link'
 
 const features = [
   {
@@ -91,9 +92,11 @@ export default function WhyUs() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex justify-center text-center mt-12 relative z-10"
         >
-          <Button size="lg" className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white px-8 py-6 text-lg rounded-lg flex items-center gap-2 transform hover:scale-105 transition duration-300 shadow-lg hover:shadow-xl">
-            Get Started Today
-          </Button>
+          <Link href={'/quote'} >
+            <Button size="lg" className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white px-8 py-6 text-lg rounded-lg flex items-center gap-2 transform hover:scale-105 transition duration-300 shadow-lg hover:shadow-xl">
+              Get Started Today
+            </Button>
+          </Link>
         </motion.div>
 
         {/* Background Animation */}

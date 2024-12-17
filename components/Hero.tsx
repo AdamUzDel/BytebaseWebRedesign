@@ -15,7 +15,7 @@ const Hero = () => {
   }; */
 
   return (
-    <section className="relative bg-gray-900 text-white min-h-[100vh] md:min-h-[80vh] flex items-center justify-center px-4 md:px-8 overflow-hidden">
+    <section className="relative bg-gray-900 text-white min-h-[100vh] md:min-h-[90vh] flex items-center justify-center px-4 md:px-8 overflow-hidden">
       {/* Content Wrapper */}
       <div className="relative z-10 max-w-4xl text-center space-y-8">
         {/* Headline */}

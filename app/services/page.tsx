@@ -135,7 +135,7 @@ const ServicesPage = () => {
             Transforming Ideas Into Digital Solutions
           </motion.h1>
           <motion.p 
-            className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
+            className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -158,7 +158,7 @@ const ServicesPage = () => {
         </div>
         <div className="absolute inset-0 overflow-hidden">
           <Image
-            src="/placeholder.jpg"
+            src="/team-planning.jpg"
             alt="Digital Solutions"
             layout="fill"
             objectFit="cover"
