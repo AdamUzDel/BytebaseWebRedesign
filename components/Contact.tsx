@@ -16,11 +16,13 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
+  // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData(prevState => ({ ...prevState, [name]: value }))
   }
 
+  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -170,98 +172,3 @@ export default function Contact() {
     </section>
   )
 }
-
-
-
-/* 'use client'
-
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-
-export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  })
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData(prevState => ({ ...prevState, [name]: value }))
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData)
-    // Reset form after submission
-    setFormData({ name: '', email: '', message: '' })
-  }
-
-  return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Contact Us</h2>
-        <div className="flex flex-wrap -mx-4">
-          <div className="w-full md:w-1/2 px-4 mb-8 md:mb-0">
-            <motion.form
-              onSubmit={handleSubmit}
-              className="max-w-lg mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="space-y-4">
-                <Input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-                <Textarea
-                  name="message"
-                  placeholder="Your Message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                />
-                <Button type="submit" className="w-full">Send Message</Button>
-              </div>
-            </motion.form>
-          </div>
-          <div className="w-full md:w-1/2 px-4">
-            <motion.div
-              className="max-w-lg mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
-              <p className="mb-4">We'd love to hear from you. Please fill out the form or use the contact information below.</p>
-              <div className="space-y-2">
-                <p><strong>Address:</strong> 123 Tech Street, Digital City, 12345</p>
-                <p><strong>Phone:</strong> (123) 456-7890</p>
-                <p><strong>Email:</strong> info@bytebasetech.com</p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
- */

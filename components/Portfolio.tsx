@@ -5,45 +5,85 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { ChevronDown, ExternalLink } from 'lucide-react'
+import Link from 'next/link'
 
-const categories = ['All', 'Websites/Apps', 'Branding/Design/Print', 'Architectural Drawings']
+const categories = [
+  'All',
+  'Websites & Apps',
+  'Branding, Design & Print',
+  'Architectural Drawings'
+]
 
 const projects = [
   {
-    title: 'E-commerce Platform',
-    category: 'Websites/Apps',
-    image: '/placeholder.jpg',
-    description: 'A fully responsive e-commerce platform with advanced features.',
+    id: 1,
+    title: 'Kambo Autos',
+    category: 'Websites & Apps',
+    description: 'A professional website for a leading auto dealer in Uganda.',
+    image: '/kambo-autos-screenshot.png',
+    techStack: 'Next.js, TypeScript, Tailwind CSS, Supabase',
+    highlight: 'Optimized for mobile users and integrated with local payment gateways.',
   },
   {
-    title: 'Corporate Branding',
-    category: 'Branding/Design/Print',
-    image: '/placeholder.jpg',
-    description: 'Complete brand identity design for a tech startup.',
+    id: 2,
+    title: 'E-Somero',
+    category: 'Websites & Apps',
+    description: 'A comprehensive learning management system for educators and students.',
+    image: '/esomero-dashboard.jpg',
+    techStack: 'React, Node.js, MongoDB',
+    highlight: 'Fully responsive with an intuitive user interface, modeled after platforms like Udemy and NetAcad.',
   },
   {
-    title: 'Modern Office Design',
+    id: 3,
+    title: 'Ask Rhona',
+    category: 'Websites & Apps',
+    description: 'An AI-powered chatbot for efficient customer service.',
+    image: '/ask-rhona-screenshot.jpg',
+    techStack: 'Python, TensorFlow, React',
+    highlight: 'Innovatively integrates AI to enhance user experience.',
+  },
+  {
+    id: 4,
+    title: 'Mukono Bakers Logo Design',
+    category: 'Branding, Design & Print',
+    description: 'Minimalist logo design for a local bakery.',
+    image: '/placeholder.jpg',
+  },
+  {
+    id: 5,
+    title: 'Event Poster for Lugogo Marathon',
+    category: 'Branding, Design & Print',
+    description: 'Vibrant, eye-catching poster for a local charity run.',
+    image: '/placeholder.jpg',
+  },
+  {
+    id: 6,
+    title: 'BytebaseTech Rebranding',
+    category: 'Branding, Design & Print',
+    description: 'Redesigned BytebaseTech\'s branding assets.',
+    image: '/placeholder.jpg',
+    highlight: 'Includes modernized logo, business cards, and promotional materials.',
+  },
+  {
+    id: 7,
+    title: 'Residential House Plan (Entebbe)',
     category: 'Architectural Drawings',
+    description: 'Detailed house plan for a modern three-bedroom residence in Entebbe.',
     image: '/placeholder.jpg',
-    description: 'Innovative office space design for a creative agency.',
   },
   {
-    title: 'Mobile Banking App',
-    category: 'Websites/Apps',
-    image: '/placeholder.jpg',
-    description: 'User-friendly mobile banking application with advanced security features.',
-  },
-  {
-    title: 'Product Packaging',
-    category: 'Branding/Design/Print',
-    image: '/placeholder.jpg',
-    description: 'Eye-catching packaging design for a premium skincare line.',
-  },
-  {
-    title: 'Residential Complex',
+    id: 8,
+    title: 'Commercial Plaza Design (Kampala)',
     category: 'Architectural Drawings',
+    description: 'Conceptualized a functional and aesthetically pleasing commercial plaza.',
     image: '/placeholder.jpg',
-    description: 'Modern and sustainable residential complex design.',
+  },
+  {
+    id: 9,
+    title: 'Interior Design for Restaurants',
+    category: 'Architectural Drawings',
+    description: 'Created 3D renderings and floor plans for restaurant spaces.',
+    image: '/placeholder.jpg',
   },
 ]
 
@@ -110,8 +150,7 @@ export default function Portfolio() {
                   <Image
                     src={project.image}
                     alt={project.title}
-                    layout="fill"
-                    objectFit="cover"
+                    fill
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
                     <h3 className="text-2xl font-bold text-white">{project.title}</h3>
@@ -121,13 +160,15 @@ export default function Portfolio() {
                   <p className="text-gray-600 mb-4">{project.description}</p>
                   <div className="flex justify-between items-center">
                     <span className="text-sm font-medium text-teal-600">{project.category}</span>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="text-cyan-600 hover:text-cyan-700"
-                    >
-                      View Project <ExternalLink className="ml-2 h-4 w-4" />
-                    </Button>
+                    <Link href={`/portfolio/${project.id}`}>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="text-cyan-600 hover:text-cyan-700"
+                      >
+                        View Project <ExternalLink className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </motion.div>

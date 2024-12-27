@@ -11,25 +11,25 @@ const products = [
   {
     name: 'eSomero',
     description: 'Digital marketplace solution',
-    image: '/pc.jpg',
+    image: '/student-using-esomero-system-by-bytebasetechnologies1.jpg',
     link: '/products/esomero',
   },
   {
     name: 'SACCO App',
     description: 'Savings and credit cooperative management',
-    image: '/placeholder.jpg',
+    image: '/sacco-app-flyer-bytebasetechnologies.jpg',
     link: '/products/sacco-app',
   },
   {
     name: 'Invoicing App',
     description: 'Streamlined invoicing and payment tracking',
-    image: '/placeholder.jpg',
+    image: '/invoicing-app-bytebasetech.jpg',
     link: '/products/invoicing-app',
   },
   {
     name: 'OnLine Learning App',
     description: 'Interactive e-learning platform',
-    image: '/placeholder.jpg',
+    image: '/online-learning-app-bytebasetech.jpg',
     link: '/products/online-learning-app',
   },
 ]
@@ -102,10 +102,10 @@ export default function PremiumProducts() {
                 <div className="grid grid-cols-1 md:grid-cols-2">
                   <div className="relative h-64 md:h-full">
                     <Image
+                      fill
+                      priority
                       src={products[currentIndex].image}
                       alt={products[currentIndex].name}
-                      layout="fill"
-                      objectFit="cover"
                     />
                   </div>
                   <div className="p-8 md:p-12 flex flex-col justify-between">

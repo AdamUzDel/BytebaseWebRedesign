@@ -10,19 +10,19 @@ const features = [
   {
     icon: <Zap className="h-10 w-10" />,
     title: 'Cutting-edge Technology',
-    description: 'We leverage the latest tech to deliver innovative solutions that keep you ahead of the curve.',
+    description: 'At BytebaseTech, we utilize the latest advancements in technology to develop innovative digital solutions that drive growth and keep your business ahead of the competition. From web development to mobile applications, we integrate future-ready tech tailored for success.',
     color: 'from-teal-400 to-cyan-600',
   },
   {
     icon: <Users className="h-10 w-10" />,
     title: 'Experienced Team',
-    description: 'Our experts bring years of industry knowledge to every project, ensuring top-tier results.',
+    description: 'Our team of seasoned professionals brings years of expertise across diverse industries. With a proven track record of delivering custom digital products, we ensure that every project is executed to perfection, providing solutions that work for you.',
     color: 'from-blue-400 to-indigo-600',
   },
   {
     icon: <Code className="h-10 w-10" />,
     title: 'Tailored Solutions',
-    description: 'We create custom solutions that perfectly align with your unique business needs and goals.',
+    description: "We specialize in crafting bespoke digital solutions to meet the unique needs of businesses in Uganda and beyond. Whether you're a startup or a well-established company, our personalized approach ensures your objectives are met with precision.",
     color: 'from-purple-400 to-pink-600',
   },
 ]
@@ -39,8 +39,8 @@ export default function WhyUs() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16 relative z-10"
         >
-          <h2 className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-cyan-600">
-            Why Choose Us
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-cyan-600">
+            Why Choose BytebaseTech?
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Experience the difference with our cutting-edge solutions and unparalleled expertise.
@@ -90,10 +90,13 @@ export default function WhyUs() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex justify-center text-center mt-12 relative z-10"
+          className="flex flex-col items-center justify-center text-center mt-12 relative z-10"
         >
+          <p className=' max-w-3xl mx-auto'>
+          Ready to take your business to the next level? Partner with us for innovative, reliable, and scalable digital solutions. Request a Quote and experience the BytebaseTech difference.
+          </p>
           <Link href={'/quote'} >
-            <Button size="lg" className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white px-8 py-6 text-lg rounded-lg flex items-center gap-2 transform hover:scale-105 transition duration-300 shadow-lg hover:shadow-xl">
+            <Button size="lg" className="mt-8 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white px-8 py-6 text-lg rounded-lg flex items-center gap-2 transform hover:scale-105 transition duration-300 shadow-lg hover:shadow-xl">
               Get Started Today
             </Button>
           </Link>
