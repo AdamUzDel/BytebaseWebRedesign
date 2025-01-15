@@ -106,7 +106,7 @@ export default function GetQuotePage() {
                       id="name"
                       type="text"
                       name="name"
-                      placeholder="John Doe"
+                      placeholder="Ssemujju Nganda"
                       value={formData.name}
                       onChange={handleChange}
                       required
@@ -119,7 +119,7 @@ export default function GetQuotePage() {
                       id="email"
                       type="email"
                       name="email"
-                      placeholder="john@example.com"
+                      placeholder="ssemujju@example.com"
                       value={formData.email}
                       onChange={handleChange}
                       required
@@ -136,6 +136,7 @@ export default function GetQuotePage() {
                         <SelectItem value="website">Website</SelectItem>
                         <SelectItem value="mobile-app">Mobile App</SelectItem>
                         <SelectItem value="branding">Branding</SelectItem>
+                        <SelectItem value="archtecturial-drawings">Archtecturial drawings</SelectItem>
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>

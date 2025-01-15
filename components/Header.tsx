@@ -12,7 +12,7 @@ const navItems = [
   { name: 'Home', href: '/' },
   { name: 'Services', href: '/services' },
   { name: 'Portfolio', href: '/portfolio' },
-  /* { name: 'Blogs', href: '/blogs' }, */
+  { name: 'Blogs', href: '/blogs' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
 ]
@@ -59,7 +59,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold flex items-center gap-4">
-            <Image src="/logo-white.png" alt="logo" width={60} height={60} />
+            <Image src="/logo-white.png" alt="logo" width={60} height={60} className='w-auto h-auto' />
             <h3 className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400">
               BytebaseTech
             </h3>

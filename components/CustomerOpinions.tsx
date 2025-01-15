@@ -1,52 +1,52 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion, useAnimation, useMotionValue } from 'framer-motion'
 import Image from 'next/image'
 import { Quote } from 'lucide-react'
 
 const testimonials = [
   {
-    name: 'John Doe',
+    name: 'Kim Kasada',
     company: 'Tech Solutions Inc.',
     testimonial: 'BytebaseTech delivered an exceptional e-commerce platform that exceeded our expectations. Their team was professional, responsive, and truly understood our business needs.',
-    image: '/placeholder.jpg',
+    image: '/kim.png',
   },
   {
-    name: 'Jane Smith',
+    name: 'Tumwiine Amos',
     company: 'Creative Designs Co.',
     testimonial: 'Working with BytebaseTech was a game-changer for our brand. Their innovative approach to our website redesign significantly improved our online presence and user engagement.',
-    image: '/placeholder.jpg',
+    image: '/tumwiine.webp',
   },
   {
-    name: 'Mike Johnson',
+    name: 'Gumisiriza Jeremiah',
     company: 'Global Innovations Ltd.',
     testimonial: 'The custom software solution provided by BytebaseTech streamlined our operations and boosted our productivity. Their ongoing support has been invaluable to our business growth.',
-    image: '/placeholder.jpg',
+    image: '/jeremiah.png',
   },
   {
-    name: 'Emily Brown',
+    name: 'Nakamya Teddy',
     company: 'Startup Accelerator',
-    testimonial: 'BytebaseTech&apos;s expertise in mobile app development helped us launch our startup&apos;s MVP in record time. Their agile approach and attention to detail were impressive.',
-    image: '/placeholder.jpg',
+    testimonial: 'BytebaseTech\'s expertise in mobile app development helped us launch our startup\'s MVP in record time. Their agile approach and attention to detail were impressive.',
+    image: '/woman1.webp',
   },
   {
-    name: 'David Lee',
+    name: 'David Andama',
     company: 'E-learning Platform',
     testimonial: 'The online learning platform developed by BytebaseTech revolutionized our course delivery. The intuitive interface and robust features have significantly improved student engagement.',
-    image: '/placeholder.jpg',
+    image: '/andama.png',
   },
 ]
 
 export default function CustomerOpinions() {
   const [isHovered, setIsHovered] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
-  const x = useMotionValue(0)
   const controls = useAnimation()
+  const x = useMotionValue(0)
 
-  const startAnimation = () => {
+  const startAnimation = useCallback(() => {
     controls.start({
-      x: [0, -100 * testimonials.length],
+      x: [x.get(), -(100 * testimonials.length) + x.get()],
       transition: {
         x: {
           repeat: Infinity,
@@ -56,7 +56,7 @@ export default function CustomerOpinions() {
         },
       },
     })
-  }
+  }, [controls, x])
 
   useEffect(() => {
     startAnimation()
@@ -71,7 +71,7 @@ export default function CustomerOpinions() {
     } else {
       startAnimation()
     }
-  }, [startAnimation, isHovered, controls])
+  }, [isHovered, controls, startAnimation])
 
   return (
     <section className="py-12 md:py-16 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
@@ -116,7 +116,7 @@ export default function CustomerOpinions() {
                   </div>
                   <div className="flex items-center">
                     <Image
-                      src={testimonial.image}
+                      src={testimonial.image || "/placeholder.svg"}
                       alt={testimonial.name}
                       width={48}
                       height={48}
@@ -137,69 +137,3 @@ export default function CustomerOpinions() {
   )
 }
 
-
-
-
-/* 'use client'
-
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-
-const testimonials = [
-  {
-    name: 'John Doe',
-    company: 'Tech Solutions Inc.',
-    testimonial: 'BytebaseTech delivered an exceptional e-commerce platform that exceeded our expectations. Their team was professional, responsive, and truly understood our business needs.',
-    image: '/placeholder.jpg',
-  },
-  {
-    name: 'Jane Smith',
-    company: 'Creative Designs Co.',
-    testimonial: 'Working with BytebaseTech was a game-changer for our brand. Their innovative approach to our website redesign significantly improved our online presence and user engagement.',
-    image: '/placeholder.jpg',
-  },
-  {
-    name: 'Mike Johnson',
-    company: 'Global Innovations Ltd.',
-    testimonial: 'The custom software solution provided by BytebaseTech streamlined our operations and boosted our productivity. Their ongoing support has been invaluable to our business growth.',
-    image: '/placeholder.jpg',
-  },
-]
-
-export default function CustomerOpinions() {
-  return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              className="bg-gray-50 p-6 rounded-lg shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <div className="flex items-center mb-4">
-                <Image
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  width={50}
-                  height={50}
-                  className="rounded-full mr-4"
-                />
-                <div>
-                  <h3 className="font-semibold">{testimonial.name}</h3>
-                  <p className="text-sm text-gray-600">{testimonial.company}</p>
-                </div>
-              </div>
-              <p className="text-gray-700">&ldquo;{testimonial.testimonial}&rdquo;</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
- */

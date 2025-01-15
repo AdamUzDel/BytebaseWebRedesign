@@ -69,7 +69,7 @@ export default function Contact() {
                     id="name"
                     type="text"
                     name="name"
-                    placeholder="John Doe"
+                    placeholder="Ssemujju Nganda"
                     value={formData.name}
                     onChange={handleChange}
                     required
@@ -82,7 +82,7 @@ export default function Contact() {
                     id="email"
                     type="email"
                     name="email"
-                    placeholder="john@example.com"
+                    placeholder="ssemujju@example.com"
                     value={formData.email}
                     onChange={handleChange}
                     required
@@ -137,21 +137,21 @@ export default function Contact() {
                   <MapPin className="w-6 h-6 text-teal-500 mr-4 mt-1" />
                   <div>
                     <h4 className="font-semibold text-gray-800">Address</h4>
-                    <p className="text-gray-600">123 Tech Street, Digital City, 12345</p>
+                    <p className="text-gray-600">First Floor, Room J-406 Nasser Business Center Building, Nasser Rd, Kampala - Uganda</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <Phone className="w-6 h-6 text-teal-500 mr-4 mt-1" />
                   <div>
                     <h4 className="font-semibold text-gray-800">Phone</h4>
-                    <p className="text-gray-600">(123) 456-7890</p>
+                    <p className="text-gray-600">(256) 764-286149 / (256) 756-373817</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <Mail className="w-6 h-6 text-teal-500 mr-4 mt-1" />
                   <div>
                     <h4 className="font-semibold text-gray-800">Email</h4>
-                    <p className="text-gray-600">info@bytebasetech.com</p>
+                    <p className="text-gray-600">inquiries@bytebasetech.com</p>
                   </div>
                 </div>
               </div>

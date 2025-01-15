@@ -100,7 +100,7 @@ export default function RequestQuote() {
                     id="name"
                     type="text"
                     name="name"
-                    placeholder="John Doe"
+                    placeholder="Ssemujju Nganda"
                     value={formData.name}
                     onChange={handleChange}
                     required
@@ -113,7 +113,7 @@ export default function RequestQuote() {
                     id="email"
                     type="email"
                     name="email"
-                    placeholder="john@example.com"
+                    placeholder="ssemujju@example.com"
                     value={formData.email}
                     onChange={handleChange}
                     required
@@ -129,7 +129,8 @@ export default function RequestQuote() {
                     <SelectContent>
                       <SelectItem value="website">Website</SelectItem>
                       <SelectItem value="mobile-app">Mobile App</SelectItem>
-                      <SelectItem value="branding">Branding</SelectItem>
+                      <SelectItem value="architectural-drawing">Architectural Drawing</SelectItem>
+                      <SelectItem value="branding">Branding / Printing</SelectItem>
                       <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
                   </Select>

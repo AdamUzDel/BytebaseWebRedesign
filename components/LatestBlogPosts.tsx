@@ -6,33 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-
-const blogPosts = [
-  {
-    title: 'The Future of Web Development',
-    summary: 'Explore the latest trends and technologies shaping the future of web development.',
-    image: '/placeholder.jpg',
-    link: '/blog/future-of-web-development',
-    category: 'Technology',
-    date: 'May 15, 2023',
-  },
-  {
-    title: 'Optimizing Your E-commerce Platform',
-    summary: 'Learn key strategies to enhance your online store\'s performance and user experience.',
-    image: '/placeholder.jpg',
-    link: '/blog/optimizing-ecommerce-platform',
-    category: 'E-commerce',
-    date: 'June 2, 2023',
-  },
-  {
-    title: 'The Impact of AI in Modern Software Solutions',
-    summary: 'Discover how artificial intelligence is revolutionizing software development and business operations.',
-    image: '/placeholder.jpg',
-    link: '/blog/ai-in-modern-software',
-    category: 'Artificial Intelligence',
-    date: 'June 20, 2023',
-  },
-]
+import { blogPosts } from '@/lib/blogData'
 
 export default function LatestBlogPosts() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
@@ -54,9 +28,9 @@ export default function LatestBlogPosts() {
           </p>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
+          {blogPosts.slice(0, 3).map((post, index) => (
             <motion.div
-              key={index}
+              key={post.id}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -66,11 +40,10 @@ export default function LatestBlogPosts() {
             >
               <div className="relative h-48 overflow-hidden">
                 <Image
-                  src={post.image}
+                  src={post.image || "/placeholder.svg"}
                   alt={post.title}
-                  layout="fill"
-                  objectFit="cover"
-                  className="transition-transform duration-300 transform hover:scale-110"
+                  fill
+                  className="transition-transform duration-300 transform hover:scale-110 w-auto h-auto"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
                   <span className="text-sm font-medium text-white bg-teal-500 px-3 py-1 rounded-full">
@@ -84,7 +57,7 @@ export default function LatestBlogPosts() {
                   <span className="text-sm text-gray-500">{post.date}</span>
                 </div>
                 <p className="text-gray-600 mb-6">{post.summary}</p>
-                <Link href={post.link}>
+                <Link href={`/blogs/${post.id}`}>
                   <Button 
                     className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white"
                     variant={hoveredIndex === index ? "default" : "outline"}
@@ -102,7 +75,7 @@ export default function LatestBlogPosts() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex justify-center text-center mt-14"
         >
-          <Link href="/blog">
+          <Link href="/blogs">
             <Button size="lg" className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white px-8 py-4 text-lg rounded-full flex items-center justify-center gap-2 transform hover:scale-105 transition duration-300 shadow-lg hover:shadow-xl">
               View All Blog Posts
               <ArrowRight className="w-5 h-5" />
@@ -114,67 +87,3 @@ export default function LatestBlogPosts() {
   )
 }
 
-
-
-/* 'use client'
-
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import Link from 'next/link'
-
-const blogPosts = [
-  {
-    title: 'The Future of Web Development',
-    summary: 'Explore the latest trends and technologies shaping the future of web development.',
-    image: '/placeholder.jpg',
-    link: '/blog/future-of-web-development',
-  },
-  {
-    title: 'Optimizing Your E-commerce Platform',
-    summary: 'Learn key strategies to enhance your online store&apos;s performance and user experience.',
-    image: '/placeholder.jpg',
-    link: '/blog/optimizing-ecommerce-platform',
-  },
-  {
-    title: 'The Impact of AI in Modern Software Solutions',
-    summary: 'Discover how artificial intelligence is revolutionizing software development and business operations.',
-    image: '/placeholder.jpg',
-    link: '/blog/ai-in-modern-software',
-  },
-]
-
-export default function LatestBlogPosts() {
-  return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Latest from Our Blog</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
-            <motion.div
-              key={index}
-              className="bg-white p-6 rounded-lg shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Image
-                src={post.image}
-                alt={post.title}
-                width={300}
-                height={200}
-                className="w-full h-40 object-cover rounded-md mb-4"
-              />
-              <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
-              <p className="text-gray-600 mb-4">{post.summary}</p>
-              <Link href={post.link} className="text-purple-600 hover:underline">
-                Read more
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
- */

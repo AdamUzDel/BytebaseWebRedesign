@@ -247,7 +247,7 @@ const AboutPage = () => {
       </section>
 
       {/* Leadership Section */}
-      <section id="leadership" className="py-20 px-4 bg-gray-900">
+      {/* <section id="leadership" className="py-20 px-4 bg-gray-900">
         <div className="container mx-auto">
           <motion.h2 
             className="text-3xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400"
@@ -299,7 +299,7 @@ const AboutPage = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
 
       {/* Milestones */}

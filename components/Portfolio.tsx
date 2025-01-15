@@ -6,86 +6,7 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { ChevronDown, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
-
-const categories = [
-  'All',
-  'Websites & Apps',
-  'Branding, Design & Print',
-  'Architectural Drawings'
-]
-
-const projects = [
-  {
-    id: 1,
-    title: 'Kambo Autos',
-    category: 'Websites & Apps',
-    description: 'A professional website for a leading auto dealer in Uganda.',
-    image: '/kambo-autos-screenshot.png',
-    techStack: 'Next.js, TypeScript, Tailwind CSS, Supabase',
-    highlight: 'Optimized for mobile users and integrated with local payment gateways.',
-  },
-  {
-    id: 2,
-    title: 'E-Somero',
-    category: 'Websites & Apps',
-    description: 'A comprehensive learning management system for educators and students.',
-    image: '/esomero-dashboard.jpg',
-    techStack: 'React, Node.js, MongoDB',
-    highlight: 'Fully responsive with an intuitive user interface, modeled after platforms like Udemy and NetAcad.',
-  },
-  {
-    id: 3,
-    title: 'Ask Rhona',
-    category: 'Websites & Apps',
-    description: 'An AI-powered chatbot for efficient customer service.',
-    image: '/ask-rhona-screenshot.jpg',
-    techStack: 'Python, TensorFlow, React',
-    highlight: 'Innovatively integrates AI to enhance user experience.',
-  },
-  {
-    id: 4,
-    title: 'Mukono Bakers Logo Design',
-    category: 'Branding, Design & Print',
-    description: 'Minimalist logo design for a local bakery.',
-    image: '/placeholder.jpg',
-  },
-  {
-    id: 5,
-    title: 'Event Poster for Lugogo Marathon',
-    category: 'Branding, Design & Print',
-    description: 'Vibrant, eye-catching poster for a local charity run.',
-    image: '/placeholder.jpg',
-  },
-  {
-    id: 6,
-    title: 'BytebaseTech Rebranding',
-    category: 'Branding, Design & Print',
-    description: 'Redesigned BytebaseTech\'s branding assets.',
-    image: '/placeholder.jpg',
-    highlight: 'Includes modernized logo, business cards, and promotional materials.',
-  },
-  {
-    id: 7,
-    title: 'Residential House Plan (Entebbe)',
-    category: 'Architectural Drawings',
-    description: 'Detailed house plan for a modern three-bedroom residence in Entebbe.',
-    image: '/placeholder.jpg',
-  },
-  {
-    id: 8,
-    title: 'Commercial Plaza Design (Kampala)',
-    category: 'Architectural Drawings',
-    description: 'Conceptualized a functional and aesthetically pleasing commercial plaza.',
-    image: '/placeholder.jpg',
-  },
-  {
-    id: 9,
-    title: 'Interior Design for Restaurants',
-    category: 'Architectural Drawings',
-    description: 'Created 3D renderings and floor plans for restaurant spaces.',
-    image: '/placeholder.jpg',
-  },
-]
+import { projects, categories } from '@/lib/portfolioData'
 
 export default function Portfolio() {
   const [filter, setFilter] = useState('All')
@@ -138,7 +59,7 @@ export default function Portfolio() {
           <AnimatePresence>
             {filteredProjects.map((project, index) => (
               <motion.div
-                key={project.title}
+                key={project.id}
                 layout
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -148,9 +69,11 @@ export default function Portfolio() {
               >
                 <div className="relative h-64">
                   <Image
-                    src={project.image}
+                    src={project.image || "/placeholder.svg"}
                     alt={project.title}
                     fill
+                    priority
+                    className='object-cover w-full h-64'
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
                     <h3 className="text-2xl font-bold text-white">{project.title}</h3>
@@ -200,83 +123,3 @@ export default function Portfolio() {
   )
 }
 
-
-
-/* 'use client'
-
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { Button } from '@/components/ui/button'
-
-const categories = ['All', 'Websites/Apps', 'Branding/Design/Print', 'Architectural Drawings']
-
-const projects = [
-  {
-    title: 'E-commerce Platform',
-    category: 'Websites/Apps',
-    image: '/placeholder.jpg',
-  },
-
-  {
-    title: 'Corporate Branding',
-    category: 'Branding/Design/Print',
-    image: '/placeholder.jpg',
-  },
-  {
-    title: 'Modern Office Design',
-    category: 'Architectural Drawings',
-    image: '/placeholder.jpg',
-  },
-  // Add more projects as needed
-]
-
-export default function Portfolio() {
-  const [filter, setFilter] = useState('All')
-
-  const filteredProjects = filter === 'All' 
-    ? projects 
-    : projects.filter(project => project.category === filter)
-
-  return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Our Portfolio</h2>
-        <div className="flex flex-wrap justify-center gap-4 mb-8">
-          {categories.map((category, index) => (
-            <Button
-              key={index}
-              onClick={() => setFilter(category)}
-              variant={filter === category ? 'default' : 'outline'}
-            >
-              {category}
-            </Button>
-          ))}
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={index}
-              className="bg-gray-50 p-6 rounded-lg shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={300}
-                height={200}
-                className="w-full h-40 object-cover rounded-md mb-4"
-              />
-              <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-              <p className="text-gray-600">{project.category}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
- */

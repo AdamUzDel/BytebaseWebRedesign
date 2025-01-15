@@ -8,25 +8,7 @@ import { motion } from 'framer-motion'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowLeft, Check } from 'lucide-react'
-
-const projects = [
-  {
-    id: 1,
-    title: 'Kambo Autos',
-    category: 'Websites & Apps',
-    description: 'A professional website for a leading auto dealer in Uganda.',
-    fullDescription: 'Kambo Autos required a modern, user-friendly website to showcase their inventory and attract more customers. We developed a responsive website with advanced search and filter options, integrated with local payment gateways for a seamless user experience.',
-    image: '/placeholder.jpg',
-    techStack: 'Next.js, TypeScript, Tailwind CSS, Supabase',
-    highlight: 'Optimized for mobile users and integrated with local payment gateways.',
-    results: [
-      'Increased online inquiries by 150%',
-      'Improved user engagement, with average session duration up by 60%',
-      'Streamlined inventory management process for the client'
-    ]
-  },
-  // other projects here - fetched from supabase database...
-]
+import { projects } from '@/lib/portfolioData'
 
 const PortfolioDetailPage = () => {
   const params = useParams()
@@ -73,7 +55,7 @@ const PortfolioDetailPage = () => {
             <h1 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400">{project.title}</h1>
             <p className="text-xl text-gray-300 mb-6">{project.category}</p>
             <Image
-              src={project.image}
+              src={project.image || "/placeholder.svg"}
               alt={project.title}
               width={600}
               height={400}
@@ -102,22 +84,26 @@ const PortfolioDetailPage = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             <h2 className="text-2xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400">Project Overview</h2>
-            <p className="text-gray-300 mb-6">{project.fullDescription}</p>
-            <h2 className="text-2xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400">Results</h2>
-            <ul className="space-y-2 text-gray-300 mb-8">
-              {project.results.map((result, index) => (
-                <motion.li 
-                  key={index}
-                  className="flex items-start"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                >
-                  <Check className="mr-2 mt-1 text-teal-400 flex-shrink-0" />
-                  <span>{result}</span>
-                </motion.li>
-              ))}
-            </ul>
+            <p className="text-gray-300 mb-6">{project.fullDescription || project.description}</p>
+            {project.results && (
+              <>
+                <h2 className="text-2xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400">Results</h2>
+                <ul className="space-y-2 text-gray-300 mb-8">
+                  {project.results.map((result, index) => (
+                    <motion.li 
+                      key={index}
+                      className="flex items-start"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                    >
+                      <Check className="mr-2 mt-1 text-teal-400 flex-shrink-0" />
+                      <span>{result}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </>
+            )}
             <Button asChild size="lg" className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white">
               <Link href="/contact">Start Your Project</Link>
             </Button>

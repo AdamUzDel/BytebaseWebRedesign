@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Code, Palette, Globe, Smartphone, Database, Zap, MessageSquare, Cloud, BarChart3, Video, Share2, Home, Printer } from 'lucide-react'
+import { BookHeart, Store, Code, Palette, Globe, Smartphone, Database, Zap, MessageSquare, Cloud, BarChart3, Video, Share2, Home, Printer } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -42,12 +42,12 @@ const brandingServices = [
     description: 'Establish consistent brand messaging and visuals.',
   },
   {
-    icon: <Image src="/placeholder.svg" alt="Business Card" width={48} height={48} className="text-teal-500" />,
+    icon: <BookHeart className="w-12 h-12 text-teal-500" />,
     title: 'Business Card and Stationery Design',
     description: 'Professional designs for your business collateral.',
   },
   {
-    icon: <Image src="/placeholder.svg" alt="Marketing Material" width={48} height={48} className="text-teal-500" />,
+    icon: <Store className="w-12 h-12 text-teal-500" />,
     title: 'Marketing Material Design',
     description: 'Eye-catching designs for your marketing campaigns.',
   },
@@ -99,24 +99,37 @@ const additionalServices = [
   },
 ]
 
+
 const testimonials = [
   {
-    name: 'John Doe',
-    company: 'Tech Innovators Inc.',
-    content: 'BytebaseTech transformed our online presence with their exceptional web development skills. Highly recommended!',
-    image: '/placeholder.svg',
+    name: 'Kim Kasada',
+    company: 'Tech Solutions Inc.',
+    content: 'BytebaseTech delivered an exceptional e-commerce platform that exceeded our expectations. Their team was professional, responsive, and truly understood our business needs.',
+    image: '/kim.png',
   },
   {
-    name: 'Jane Smith',
-    company: 'Global Solutions Ltd.',
-    content: 'The mobile app BytebaseTech developed for us has significantly improved our customer engagement. Great work!',
-    image: '/placeholder.svg',
-  },
-  {
-    name: 'Mike Johnson',
+    name: 'Tumwiine Amos',
     company: 'Creative Designs Co.',
-    content: 'Their branding expertise helped us stand out in a crowded market. BytebaseTech is a game-changer!',
-    image: '/placeholder.svg',
+    content: 'Working with BytebaseTech was a game-changer for our brand. Their innovative approach to our website redesign significantly improved our online presence and user engagement.',
+    image: '/tumwiine.webp',
+  },
+  {
+    name: 'Gumisiriza Jeremiah',
+    company: 'Global Innovations Ltd.',
+    content: 'The custom software solution provided by BytebaseTech streamlined our operations and boosted our productivity. Their ongoing support has been invaluable to our business growth.',
+    image: '/jeremiah.png',
+  },
+  {
+    name: 'Nakamya Teddy',
+    company: 'Startup Accelerator',
+    content: 'BytebaseTech\'s expertise in mobile app development helped us launch our startup\'s MVP in record time. Their agile approach and attention to detail were impressive.',
+    image: '/woman1.webp',
+  },
+  {
+    name: 'David Andama',
+    company: 'E-learning Platform',
+    content: 'The online learning platform developed by BytebaseTech revolutionized our course delivery. The intuitive interface and robust features have significantly improved student engagement.',
+    image: '/andama.png',
   },
 ]
 
