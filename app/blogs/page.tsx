@@ -87,7 +87,7 @@ const BlogListingPage = () => {
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-500">By {post.author} · {post.date}</span>
                   <Button variant="outline" size="sm" asChild>
-                    <Link href={`/blog/${post.id}`}>Read More</Link>
+                    <Link href={`/blogs/${post.id}`}>Read More</Link>
                   </Button>
                 </div>
               </div>

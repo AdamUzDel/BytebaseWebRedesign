@@ -29,7 +29,7 @@ export interface BlogPost {
         <p>As these technologies continue to mature, we can expect web development to become more powerful, efficient, and user-centric than ever before.</p>
       `,
       image: '/web-dev-future-bytebasetech.png',
-      link: '/blog/future-of-web-development',
+      link: '/blogs/future-of-web-development',
       category: 'Technology',
       date: 'May 15, 2024',
       author: 'Adam Ssemakula'
@@ -52,7 +52,7 @@ export interface BlogPost {
         <p>By implementing these strategies, you can significantly enhance your e-commerce platform's performance and provide a better experience for your customers.</p>
       `,
       image: '/ecommerce-platform-optimization-bytebasetech.jpg',
-      link: '/blog/optimizing-ecommerce-platform',
+      link: '/blogs/optimizing-ecommerce-platform',
       category: 'E-commerce',
       date: 'June 2, 2024',
       author: 'Adam Ssemakula'
@@ -75,7 +75,7 @@ export interface BlogPost {
         <p>As AI continues to evolve, we can expect it to play an increasingly central role in shaping the future of software solutions and business operations.</p>
       `,
       image: '/The Impact of AI in Modern Software Solutions-bytebasetech.jpg',
-      link: '/blog/ai-in-modern-software',
+      link: '/blogs/ai-in-modern-software',
       category: 'Artificial Intelligence',
       date: 'June 20, 2024',
       author: 'Adam Ssemakula'
