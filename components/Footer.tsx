@@ -32,7 +32,7 @@ export default function Footer() {
                   Home
                 </Link>
               </li>
-              {['About', 'Services', 'Portfolio', 'Products'].map((item) => (
+              {['About', 'Services', 'Portfolio'].map((item) => (
                 <li key={item}>
                   <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="text-gray-300 hover:text-teal-400 transition-colors flex items-center">
                     <ArrowRight size={16} className="mr-2" />
@@ -40,6 +40,12 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link href="/#products" className="text-gray-300 hover:text-teal-400 transition-colors flex items-center">
+                  <ArrowRight size={16} className="mr-2" />
+                  Products
+                </Link>
+              </li>
             </ul>
           </div>
           <div>

@@ -53,7 +53,7 @@ export default function PremiumProducts() {
   }
 
   return (
-    <section className="py-12 md:py-16 bg-gradient-to-br from-gray-100 to-white overflow-hidden">
+    <section className="py-12 md:py-16 bg-gradient-to-br from-gray-100 to-white overflow-hidden" id='products'>
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: -50 }}
