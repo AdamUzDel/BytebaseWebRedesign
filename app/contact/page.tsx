@@ -10,6 +10,8 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { MapPin, Phone, Mail, Clock, Facebook, Twitter, Instagram, Loader2 } from 'lucide-react'
+import { submitContact } from '@/lib/contactUtils'
+import { toast } from '@/hooks/use-toast'
 
 interface FormData {
   name: string;
@@ -69,12 +71,26 @@ const ContactPage = () => {
     e.preventDefault()
     if (validateForm()) {
       setIsSubmitting(true)
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      console.log('Form submitted:', formData)
-      setIsSubmitting(false)
-      setIsSubmitted(true)
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
+      try {
+        const result = await submitContact(formData)
+        console.log('Contact form submitted:', result)
+        setIsSubmitted(true)
+        toast({
+          title: "Message Sent Successfully",
+          description: "We'll get back to you soon!",
+        })
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
+      } catch (error) {
+        console.error('Failed to submit contact form:', error)
+        toast({
+          title: "Error",
+          description: "Failed to send message. Please try again.",
+          variant: "destructive",
+        })
+      } finally {
+        setIsSubmitting(false)
+        setTimeout(() => setIsSubmitted(false), 3000)
+      }
     }
   }
 

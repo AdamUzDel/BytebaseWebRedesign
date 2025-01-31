@@ -8,9 +8,10 @@ import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Check, Send } from 'lucide-react'
 import { toast } from '@/hooks/use-toast'
+import { submitQuote, type QuoteFormData } from '@/lib/quoteUtils'
 
 export default function GetQuotePage() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<QuoteFormData>({
     name: '',
     email: '',
     projectType: '',
@@ -32,19 +33,29 @@ export default function GetQuotePage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    console.log('Form submitted:', formData)
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    toast({
-      title: "Quote Request Submitted",
-      description: "We'll get back to you with a custom quote soon!",
-    })
-    // Reset form after submission
-    setFormData({ name: '', email: '', projectType: '', budget: '', message: '' })
-    // Reset submitted state after 3 seconds
-    setTimeout(() => setIsSubmitted(false), 3000)
+    
+    try {
+      const result = await submitQuote(formData)
+      console.log('Quote submitted successfully:', result)
+      setIsSubmitted(true)
+      toast({
+        title: "Quote Request Submitted",
+        description: "We'll get back to you with a custom quote soon!",
+      })
+      // Reset form after submission
+      setFormData({ name: '', email: '', projectType: '', budget: '', message: '' })
+    } catch (error) {
+      console.error('Failed to submit quote:', error)
+      toast({
+        title: "Error",
+        description: "Failed to submit quote. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+      // Reset submitted state after 3 seconds
+      setTimeout(() => setIsSubmitted(false), 3000)
+    }
   }
 
   return (
@@ -128,7 +139,7 @@ export default function GetQuotePage() {
                   </div>
                   <div>
                     <label htmlFor="projectType" className="block text-sm font-medium text-gray-700 mb-1">Project Type</label>
-                    <Select onValueChange={handleSelectChange}>
+                    <Select onValueChange={handleSelectChange} required>
                       <SelectTrigger id="projectType" className="w-full">
                         <SelectValue placeholder="Select project type" />
                       </SelectTrigger>
@@ -142,7 +153,7 @@ export default function GetQuotePage() {
                     </Select>
                   </div>
                   <div>
-                    <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-1">Budget (Optional)</label>
+                    <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-1">Budget</label>
                     <Input
                       id="budget"
                       type="text"
@@ -150,6 +161,7 @@ export default function GetQuotePage() {
                       placeholder="e.g. $5000"
                       value={formData.budget}
                       onChange={handleChange}
+                      required
                       className="w-full"
                     />
                   </div>

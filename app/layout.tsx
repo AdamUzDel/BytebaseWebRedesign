@@ -8,8 +8,54 @@ import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'BytebaseTech - best cutting-edge website design, app & software development, graphic design and branding solutions in Uganda',
-  description: 'BytebaseTech provides tailored digital solutions with cutting-edge technology and an experienced team.',
+  title: 'BytebaseTech - Leading Web Design & Development in Uganda',
+  description: 'ByteBase Technologies specializes in custom software development, web applications, and digital solutions. Transform your business with our innovative tech solutions in Uganda.',
+  keywords: [
+    "ByteBase",
+    "ByteBase Technologies",
+    "software development Uganda",
+    "BytebaseTech",
+    "Web Design Uganda",
+    "Web Development Uganda",
+    "Digital Solutions Uganda",
+    "BytebaseTechnologies",
+  ],
+  openGraph: {
+    title: 'BytebaseTech - Leading Web Design & Development in Uganda',
+    description: "Innovative web design and development solutions by BytebaseTech, Uganda's premier digital agency.",
+    url: 'https://bytebasetech.com',
+    siteName: 'ByteBase Technologies',
+    images: [
+      {
+        url: '"https://bytebasetech.com/bytebase-technologies-logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'BytebaseTech - Web Design and Development',
+      },
+    ],
+    locale: 'en_UG',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "BytebaseTech - Leading Web Design & Development in Uganda",
+    description: "Innovative web design and development solutions by BytebaseTech, Uganda's premier digital agency.",
+    images: ['"https://bytebasetech.com/bytebase-technologies-logo.png'],
+  },
+  alternates: {
+    canonical: "https://bytebasetech.com",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 }
 
 export default function RootLayout({

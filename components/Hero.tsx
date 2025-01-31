@@ -1,26 +1,22 @@
-'use client'
-
-import React from "react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Rocket } from 'lucide-react';
-import Link from "next/link";
+"use client"
+import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
+import { ArrowRight, Rocket, ChevronDown } from "lucide-react"
+import Link from "next/link"
 
 const Hero = () => {
-  /* const scrollToNextSection = () => {
+  const scrollToNextSection = () => {
     window.scrollTo({
       top: window.innerHeight,
-      behavior: 'smooth'
-    });
-  }; */
+      behavior: "smooth",
+    })
+  }
 
   return (
-    <section className="relative bg-gray-900 text-white min-h-[100vh] md:min-h-[90vh] flex items-center justify-center px-4 md:px-8 overflow-hidden">
-      {/* Content Wrapper */}
+    <section className="relative bg-gray-900 text-white min-h-screen flex items-center justify-center px-4 md:px-8 overflow-hidden pt-20">
       <div className="relative z-10 max-w-4xl text-center space-y-8">
-        {/* Headline */}
         <motion.h1
-          className="text-4xl md:text-6xl mt-10 md:mt-16 font-bold tracking-tight leading-tight"
+          className="text-4xl md:text-6xl font-bold tracking-tight leading-tight"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -29,27 +25,25 @@ const Hero = () => {
             delay: 0.2,
           }}
         >
-          Driving Digital Innovation for{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400 inline-block">
+          BytebaseTech: Uganda&apos;s Premier{" "}
+          <span className="text-teal-400 inline-block">
             <motion.span
-              className="text-teal-400"
               initial={{ display: "inline-block" }}
               animate={{ rotateX: [0, 360] }}
               transition={{
                 duration: 1,
                 ease: "easeInOut",
                 delay: 1,
-                repeat: Infinity,
-                repeatDelay: 5
+                repeat: Number.POSITIVE_INFINITY,
+                repeatDelay: 5,
               }}
             >
-              Businesses in Uganda
+              Web Design
             </motion.span>{" "}
-            and Beyond
+            & Development Agency
           </span>
         </motion.h1>
 
-        {/* Subheadline */}
         <motion.p
           className="text-base md:text-xl text-gray-300 max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 50 }}
@@ -60,8 +54,8 @@ const Hero = () => {
             delay: 0.4,
           }}
         >
-          At BytebaseTech, we design innovative web apps, branding solutions,
-          and digital tools to transform your ideas into reality. Let&apos;s build the future together.
+          At BytebaseTech, we design innovative websites, web apps, and digital solutions to transform your business in
+          Uganda and beyond. Experience the BytebaseTech difference today.
         </motion.p>
 
         {/* Call-to-Actions */}
@@ -77,58 +71,84 @@ const Hero = () => {
         >
           <Button
             asChild
-            className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white px-8 py-6 text-lg rounded-lg flex items-center gap-2 transform hover:scale-105 transition duration-300 w-full md:w-auto shadow-lg hover:shadow-xl"
+            className="bg-teal-500 text-white px-8 py-6 text-lg rounded-lg flex items-center gap-2 hover:bg-teal-600 transform hover:scale-105 transition duration-300 w-full md:w-auto shadow-lg hover:shadow-xl"
           >
             <Link href="/quote">
               <Rocket className="mr-2" size={24} />
-              Get a Quote
+              Get a Free Web Design Quote
             </Link>
           </Button>
           <Button
             asChild
-            className="bg-white text-gray-900 hover:bg-gray-100 px-8 py-6 text-lg rounded-lg flex items-center gap-2 transform hover:scale-105 transition duration-300 w-full md:w-auto shadow-lg hover:shadow-xl"
+            variant="outline"
+            className="border-2 border-teal-500 text-teal-400 px-8 py-6 text-lg rounded-lg flex items-center gap-2 hover:bg-teal-500 hover:text-white transform hover:scale-105 transition duration-300 w-full md:w-auto shadow-lg hover:shadow-xl"
           >
-            <Link href="/services">
+            <Link href="/portfolio">
               <ArrowRight className="mr-2" size={24} />
-              View Services
+              View Our Web Design Portfolio
             </Link>
           </Button>
         </motion.div>
       </div>
 
+      {/* Scroll Down Indicator */}
+      <motion.div
+        className="absolute bottom-1 left-1/2 transform -translate-x-1/2"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{
+          duration: 1.5,
+          repeat: Number.POSITIVE_INFINITY,
+          repeatType: "reverse",
+        }}
+      >
+        <Button
+          variant="ghost"
+          size="icon"
+          className="text-teal-400 hover:text-teal-300 hover:bg-transparent"
+          onClick={scrollToNextSection}
+        >
+          <ChevronDown size={62} />
+          <span className="sr-only">Scroll Down</span>
+        </Button>
+      </motion.div>
+
       {/* Animated Background */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-teal-900 via-gray-900 to-cyan-900 opacity-30 blur-xl z-0"
+        className="absolute inset-0 bg-gradient-to-r from-teal-600 via-transparent to-teal-800 opacity-30 blur-xl z-0"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.8 }}
         transition={{ duration: 2, ease: "easeInOut" }}
       />
-      {[...Array(5)].map((_, index) => (
-        <motion.div
-          key={index}
-          className="absolute rounded-full opacity-20 blur-3xl z-0"
-          style={{
-            background: `radial-gradient(circle, ${index % 2 === 0 ? 'rgba(45, 212, 191, 0.3)' : 'rgba(34, 211, 238, 0.3)'} 0%, rgba(17, 24, 39, 0) 70%)`,
-            width: `${Math.random() * 300 + 100}px`,
-            height: `${Math.random() * 300 + 100}px`,
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{
-            scale: [0.8, 1, 0.8],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: Math.random() * 5 + 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
+      <motion.div
+        className="absolute top-1/4 left-1/3 w-48 h-48 bg-teal-500 rounded-full opacity-20 blur-3xl z-0"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{
+          scale: [0.8, 1, 0.8],
+          opacity: [0.2, 0.4, 0.2],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Number.POSITIVE_INFINITY,
+          ease: "easeInOut",
+        }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-teal-400 rounded-full opacity-10 blur-2xl z-0"
+        initial={{ opacity: 0 }}
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.1, 0.3, 0.1],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Number.POSITIVE_INFINITY,
+          ease: "easeInOut",
+        }}
+      />
     </section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero
 

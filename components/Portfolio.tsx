@@ -1,23 +1,19 @@
-'use client'
+"use client"
 
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import Image from 'next/image'
-import { Button } from '@/components/ui/button'
-import { ChevronDown, ExternalLink } from 'lucide-react'
-import Link from 'next/link'
-import { projects, categories } from '@/lib/portfolioData'
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { ChevronDown, ExternalLink } from "lucide-react"
+import Link from "next/link"
+import { projects, categories } from "@/lib/portfolioData"
 
 export default function Portfolio() {
-  const [filter, setFilter] = useState('All')
+  const [filter, setFilter] = useState("All")
   const [filteredProjects, setFilteredProjects] = useState(projects)
 
   useEffect(() => {
-    setFilteredProjects(
-      filter === 'All'
-        ? projects
-        : projects.filter(project => project.category === filter)
-    )
+    setFilteredProjects(filter === "All" ? projects : projects.filter((project) => project.category === filter))
   }, [filter])
 
   return (
@@ -29,7 +25,7 @@ export default function Portfolio() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-5xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-cyan-600"
         >
-          Our Portfolio
+          BytebaseTech Web Design Portfolio
         </motion.h2>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -41,21 +37,18 @@ export default function Portfolio() {
             <Button
               key={index}
               onClick={() => setFilter(category)}
-              variant={filter === category ? 'default' : 'outline'}
+              variant={filter === category ? "default" : "outline"}
               className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 filter === category
-                  ? 'bg-gradient-to-r from-teal-500 to-cyan-500 text-white shadow-lg'
-                  : 'hover:bg-gray-100'
+                  ? "bg-gradient-to-r from-teal-500 to-cyan-500 text-white shadow-lg"
+                  : "hover:bg-gray-100"
               }`}
             >
               {category}
             </Button>
           ))}
         </motion.div>
-        <motion.div
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence>
             {filteredProjects.map((project, index) => (
               <motion.div
@@ -70,10 +63,11 @@ export default function Portfolio() {
                 <div className="relative h-64">
                   <Image
                     src={project.image || "/placeholder.svg"}
-                    alt={project.title}
+                    alt={`BytebaseTech ${project.title} - Web Design Project`}
                     fill
-                    priority
-                    className='object-cover w-full h-64'
+                    objectFit="cover"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
                     <h3 className="text-2xl font-bold text-white">{project.title}</h3>
@@ -84,11 +78,7 @@ export default function Portfolio() {
                   <div className="flex justify-between items-center">
                     <span className="text-sm font-medium text-teal-600">{project.category}</span>
                     <Link href={`/portfolio/${project.id}`}>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="text-cyan-600 hover:text-cyan-700"
-                      >
+                      <Button variant="ghost" size="sm" className="text-cyan-600 hover:text-cyan-700">
                         View Project <ExternalLink className="ml-2 h-4 w-4" />
                       </Button>
                     </Link>
@@ -99,11 +89,7 @@ export default function Portfolio() {
           </AnimatePresence>
         </motion.div>
         {filteredProjects.length === 0 && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center text-gray-500 mt-8"
-          >
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center text-gray-500 mt-8">
             No projects found in this category.
           </motion.p>
         )}
@@ -113,10 +99,15 @@ export default function Portfolio() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex justify-center text-center mt-14"
         >
-          <Button size="lg" className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white px-8 py-4 text-lg rounded-full flex items-center justify-center gap-2 transform hover:scale-105 transition duration-300 shadow-lg hover:shadow-xl">
-            View All Projects
-            <ChevronDown className="w-5 h-5" />
-          </Button>
+          <Link href="/portfolio">
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white px-8 py-8 md:py-4 text-lg rounded-full flex flex-col md:flex-row items-center justify-center gap-2 transform hover:scale-105 transition duration-300 shadow-lg hover:shadow-xl"
+            >
+              All BytebaseTech Web Projects
+              <ChevronDown className="w-5 h-5" />
+            </Button>
+          </Link>
         </motion.div>
       </div>
     </section>
