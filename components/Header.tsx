@@ -30,7 +30,7 @@ const Header = () => {
 
   return (
     <motion.header
-      className={`fixed w-full z-50 transition-all duration-300 ${
+      className={`fixed w-full z-[99] transition-all duration-300 ${
         isScrolled ? "bg-gray-900/95 backdrop-blur-sm py-4" : "bg-transparent py-6"
       }`}
       initial={{ y: -100 }}
@@ -41,7 +41,7 @@ const Header = () => {
         <div className="flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold flex items-center gap-4">
           <Image 
-            alt="logo" src={"/logo-white.png"} loading="lazy" width="60" height="60" decoding="async" data-nimg="1" className="w-auto h-auto"></Image>
+            alt="logo" src={"/logo-white.png"} loading="lazy" width="60" height="60" decoding="async" data-nimg="1" className="w-auto h-auto"/>
             <h3 className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400">BytebaseTech</h3>
           </Link>
 
@@ -73,7 +73,7 @@ const Header = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.nav
-            className="md:hidden fixed top-0 right-0 bottom-0 w-64 bg-gray-900/95 backdrop-blur-sm p-6"
+            className="md:hidden fixed top-0 right-0 bottom-0 w-64 bg-gray-900/95 backdrop-blur-md p-6 z-[100]"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}

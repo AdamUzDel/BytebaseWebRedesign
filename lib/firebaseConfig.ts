@@ -4,7 +4,7 @@ import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCYJo0zLCwLrno7rh7XkADOOmKsIAvMoT0",
+    apiKey: process.env.FIREBASE_API_KEY,
     authDomain: "bytebase-tech.firebaseapp.com",
     projectId: "bytebase-tech",
     storageBucket: "bytebase-tech.appspot.com",
