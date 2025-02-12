@@ -45,6 +45,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: "https://bytebasetech.com/best-website-designers-in-uganda",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: "https://bytebasetech.com/advanced-solutions",
       lastModified: new Date(),
       changeFrequency: "weekly",

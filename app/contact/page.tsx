@@ -215,7 +215,7 @@ const ContactPage = () => {
           >
             <div className="grid gap-6">
               <div>
-                <Label htmlFor="name">Name</Label>
+                <Label htmlFor="name" className='block text-sm font-medium mb-2'>Name</Label>
                 <Input
                   id="name"
                   name="name"
@@ -226,7 +226,7 @@ const ContactPage = () => {
                 {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
               </div>
               <div>
-                <Label htmlFor="email">Email Address</Label>
+                <Label htmlFor="email" className='block text-sm font-medium mb-2'>Email Address</Label>
                 <Input
                   id="email"
                   name="email"
@@ -238,7 +238,7 @@ const ContactPage = () => {
                 {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
               </div>
               <div>
-                <Label htmlFor="phone">Phone Number (Optional)</Label>
+                <Label htmlFor="phone" className='block text-sm font-medium mb-2'>Phone Number (Optional)</Label>
                 <Input
                   id="phone"
                   name="phone"
@@ -248,7 +248,7 @@ const ContactPage = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="subject">Subject</Label>
+                <Label htmlFor="subject" className='block text-sm font-medium mb-2'>Subject</Label>
                 <Select onValueChange={handleSelectChange} value={formData.subject}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select a subject" />
@@ -263,7 +263,7 @@ const ContactPage = () => {
                 {errors.subject && <p className="text-red-500 text-sm mt-1">{errors.subject}</p>}
               </div>
               <div>
-                <Label htmlFor="message">Message</Label>
+                <Label htmlFor="message" className='block text-sm font-medium mb-2'>Message</Label>
                 <Textarea
                   id="message"
                   name="message"
@@ -323,7 +323,7 @@ const ContactPage = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7573224776256!2d32.58333731475345!3d0.3152306997709543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb0f79e94f91%3A0x7c7c4a5b8a5c5b5a!2sKampala%2C%20Uganda!5e0!3m2!1sen!2sus!4v1625581234567!5m2!1sen!2sus" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.8797750470308!2d32.581990637855974!3d0.3109856638751891!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb47cf36b8c5%3A0xf71e4804559d6b1c!2sBytebase%20Tech!5e0!3m2!1sen!2sus!4v1739340098151!5m2!1sen!2sus"
               width="100%" 
               height="100%" 
               style={{ border: 0 }} 

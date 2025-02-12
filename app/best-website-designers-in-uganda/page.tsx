@@ -18,7 +18,7 @@ const BestWebsiteDesignersPage = () => {
       <section className="relative py-20 px-4">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg"
+            src="/uganda-skyline.jpg"
             alt="BytebaseTech Web Design"
             layout="fill"
             objectFit="cover"
@@ -28,7 +28,7 @@ const BestWebsiteDesignersPage = () => {
         </div>
         <div className="container mx-auto relative z-10">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-down">
+            <h1 className="text-4xl md:text-6xl font-bold mt-32 mb-4 animate-fade-in-down">
               Transform Your Business with a Powerful Website
             </h1>
             <p className="text-xl md:text-2xl mb-8 animate-fade-in-up animation-delay-200">

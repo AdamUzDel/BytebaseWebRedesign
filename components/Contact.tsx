@@ -5,37 +5,92 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { MapPin, Phone, Mail, Send, Check } from 'lucide-react'
+import { MapPin, Phone, Mail, Send, Check, Facebook, Instagram, Twitter } from 'lucide-react'
+import Link from 'next/link'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { submitContact } from '@/lib/contactUtils'
+import { toast } from '@/hooks/use-toast'
 
-export default function Contact() {
-  const [formData, setFormData] = useState({
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+}
+
+const ContactPage = () => {
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
+    phone: '',
+    subject: '',
     message: '',
   })
+  const [errors, setErrors] = useState<FormErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-
-  // Handle input changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData(prevState => ({ ...prevState, [name]: value }))
-  }
-
-  // Handle form submission
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    console.log('Form submitted:', formData)
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    // Reset form after submission
-    setFormData({ name: '', email: '', message: '' })
-    // Reset submitted state after 3 seconds
-    setTimeout(() => setIsSubmitted(false), 3000)
-  }
+  
+    const validateForm = (): boolean => {
+      const newErrors: FormErrors = {}
+      if (formData.name.length < 2) {
+        newErrors.name = "Name must be at least 2 characters."
+      }
+      if (!/\S+@\S+\.\S+/.test(formData.email)) {
+        newErrors.email = "Invalid email address."
+      }
+      if (!formData.subject) {
+        newErrors.subject = "Please select a subject."
+      }
+      if (formData.message.length < 10) {
+        newErrors.message = "Message must be at least 10 characters."
+      }
+      setErrors(newErrors)
+      return Object.keys(newErrors).length === 0
+    }
+  
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      const { name, value } = e.target
+      setFormData(prev => ({ ...prev, [name]: value }))
+    }
+  
+    const handleSelectChange = (value: string) => {
+      setFormData(prev => ({ ...prev, subject: value }))
+    }
+  
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
+      if (validateForm()) {
+        setIsSubmitting(true)
+        try {
+          const result = await submitContact(formData)
+          console.log('Contact form submitted:', result)
+          setIsSubmitted(true)
+          toast({
+            title: "Message Sent Successfully",
+            description: "We'll get back to you soon!",
+          })
+          setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
+        } catch (error) {
+          console.error('Failed to submit contact form:', error)
+          toast({
+            title: "Error",
+            description: "Failed to send message. Please try again.",
+            variant: "destructive",
+          })
+        } finally {
+          setIsSubmitting(false)
+          setTimeout(() => setIsSubmitted(false), 3000)
+        }
+      }
+    }
 
   return (
     <section className="py-12 md:py-16 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
@@ -74,7 +129,9 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     className="w-full"
+                    aria-invalid={errors.name ? "true" : "false"}
                   />
+                  {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
@@ -87,7 +144,34 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     className="w-full"
+                    aria-invalid={errors.email ? "true" : "false"}
                   />
+                  {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+                </div>
+                <div>
+                  <label htmlFor="phone" className='block text-sm font-medium mb-2'>Phone Number</label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="subject" className='block text-sm font-medium mb-2'>Subject</label>
+                  <Select onValueChange={handleSelectChange} value={formData.subject}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select a subject" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="General Inquiry">General Inquiry</SelectItem>
+                      <SelectItem value="Support">Support</SelectItem>
+                      <SelectItem value="Project Request">Project Request</SelectItem>
+                      <SelectItem value="Feedback">Feedback</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  {errors.subject && <p className="text-red-500 text-sm mt-1">{errors.subject}</p>}
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
@@ -98,8 +182,9 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="w-full h-32"
+                    aria-invalid={errors.message ? "true" : "false"}
                   />
+                  {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
                 </div>
                 <Button
                   type="submit"
@@ -157,13 +242,17 @@ export default function Contact() {
               </div>
               <div className="mt-12">
                 <h4 className="text-xl font-semibold mb-4 text-gray-800">Follow Us</h4>
-                <div className="flex space-x-4">
-                  {/* Add your social media icons/links here */}
-                  {/* Example: */}
-                  {/* <a href="#" className="text-teal-500 hover:text-teal-600">
-                    <TwitterIcon className="w-6 h-6" />
-                  </a> */}
-                </div>
+            <div className="flex space-x-4">
+              <Link href="https://www.facebook.com/profile.php?id=61564244807997" className="text-gray-400 hover:text-teal-400 transition-colors">
+                <Facebook size={24} />
+              </Link>
+              <Link href="https://www.twitter.com/BytebaseTech" className="text-gray-400 hover:text-teal-400 transition-colors">
+                <Twitter size={24} />
+              </Link>
+              <Link href="https://www.instagram.com/bytebasetech/" className="text-gray-400 hover:text-teal-400 transition-colors">
+                <Instagram size={24} />
+              </Link>
+            </div>
               </div>
             </motion.div>
           </div>
@@ -172,3 +261,5 @@ export default function Contact() {
     </section>
   )
 }
+
+export default ContactPage

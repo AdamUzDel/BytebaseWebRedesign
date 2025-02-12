@@ -31,7 +31,7 @@ const WebDesignUgandaPage = () => {
       <section className="relative pt-32 pb-20 px-4">
         <div className="container mx-auto text-center relative z-10">
           <motion.h1
-            className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400"
+            className="text-4xl md:text-6xl font-bold mt-24 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}

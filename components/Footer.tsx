@@ -27,9 +27,9 @@ export default function Footer() {
             <h4 className="text-xl font-semibold mb-6">Quick Links</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/" className="text-gray-300 hover:text-teal-400 transition-colors flex items-center">
+                <Link href="/best-website-designers-in-uganda" className="text-gray-300 hover:text-teal-400 transition-colors flex items-center">
                   <ArrowRight size={16} className="mr-2" />
-                  Home
+                  Best Website Designers in Uganda
                 </Link>
               </li>
               {['About', 'Services', 'Portfolio'].map((item) => (
@@ -41,9 +41,9 @@ export default function Footer() {
                 </li>
               ))}
               <li>
-                <Link href="/#products" className="text-gray-300 hover:text-teal-400 transition-colors flex items-center">
+                <Link href="web-design-uganda" className="text-gray-300 hover:text-teal-400 transition-colors flex items-center">
                   <ArrowRight size={16} className="mr-2" />
-                  Products
+                  Web Design in Uganda
                 </Link>
               </li>
             </ul>

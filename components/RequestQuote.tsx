@@ -7,9 +7,11 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Check, Send } from 'lucide-react'
+import { toast } from '@/hooks/use-toast'
+import { submitQuote, type QuoteFormData } from '@/lib/quoteUtils'
 
 export default function RequestQuote() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<QuoteFormData>({
     name: '',
     email: '',
     projectType: '',
@@ -31,15 +33,29 @@ export default function RequestQuote() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    console.log('Form submitted:', formData)
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    // Reset form after submission
-    setFormData({ name: '', email: '', projectType: '', budget: '', message: '' })
-    // Reset submitted state after 3 seconds
-    setTimeout(() => setIsSubmitted(false), 3000)
+    
+    try {
+      const result = await submitQuote(formData)
+      console.log('Quote submitted successfully:', result)
+      setIsSubmitted(true)
+      toast({
+        title: "Quote Request Submitted",
+        description: "We'll get back to you with a custom quote soon!",
+      })
+      // Reset form after submission
+      setFormData({ name: '', email: '', projectType: '', budget: '', message: '' })
+    } catch (error) {
+      console.error('Failed to submit quote:', error)
+      toast({
+        title: "Error",
+        description: "Failed to submit quote. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+      // Reset submitted state after 3 seconds
+      setTimeout(() => setIsSubmitted(false), 3000)
+    }
   }
 
   return (
@@ -186,104 +202,3 @@ export default function RequestQuote() {
     </section>
   )
 }
-
-
-
-
-/* 'use client'
-
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-
-export default function RequestQuote() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    projectType: '',
-    budget: '',
-    message: '',
-  })
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData(prevState => ({ ...prevState, [name]: value }))
-  }
-
-  const handleSelectChange = (value: string) => {
-    setFormData(prevState => ({ ...prevState, projectType: value }))
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData)
-    // Reset form after submission
-    setFormData({ name: '', email: '', projectType: '', budget: '', message: '' })
-  }
-
-  return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Request a Quote</h2>
-        <motion.form
-          onSubmit={handleSubmit}
-          className="max-w-lg mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="space-y-4">
-            <Input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-            <Input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            <Select onValueChange={handleSelectChange}>
-              <SelectTrigger>
-                <SelectValue placeholder="Project Type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="website">Website</SelectItem>
-                <SelectItem value="mobile-app">Mobile App</SelectItem>
-                <SelectItem value="branding">Branding</SelectItem>
-                <SelectItem value="other">Other</SelectItem>
-              </SelectContent>
-            </Select>
-            <Input
-              type="text"
-              name="budget"
-              placeholder="Budget"
-              value={formData.budget}
-              onChange={handleChange}
-            />
-            <Textarea
-              name="message"
-              placeholder="Tell us about your project"
-              value={formData.message}
-              onChange={handleChange}
-              required
-            />
-            <Button type="submit" className="w-full">Submit Request</Button>
-          </div>
-        </motion.form>
-      </div>
-    </section>
-  )
-}
-
- */
