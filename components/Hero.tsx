@@ -1,16 +1,32 @@
 "use client"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Rocket, ChevronDown } from "lucide-react"
+import { ArrowRight, Rocket, ChevronDown, X } from "lucide-react"
 import Link from "next/link"
+import { useState, useEffect } from "react"
+import Countdown from "react-countdown"
 
 const Hero = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  // Show modal on page load
+  useEffect(() => {
+    setIsModalOpen(true)
+  }, [])
+
   const scrollToNextSection = () => {
     window.scrollTo({
       top: window.innerHeight,
       behavior: "smooth",
     })
   }
+
+  // Countdown renderer
+  const renderer = ({ days, hours, minutes, seconds }: { days: number; hours: number; minutes: number; seconds: number }) => (
+    <span className="font-bold text-yellow-300">
+      {days}d {hours}h {minutes}m {seconds}s
+    </span>
+  )
 
   return (
     <section className="relative bg-gray-900 text-white min-h-screen flex items-center justify-center px-4 md:px-8 overflow-hidden pt-20">
@@ -91,6 +107,57 @@ const Hero = () => {
         </motion.div>
       </div>
 
+      {/* Modal Pop-Up */}
+      {isModalOpen && (
+        <motion.div
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div
+            className="bg-teal-500 text-white p-6 rounded-lg shadow-xl max-w-md w-full mx-4"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl md:text-2xl font-semibold">
+                Small Business Website Offer!
+              </h2>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsModalOpen(false)}
+                className="text-white hover:bg-teal-600"
+              >
+                <X size={24} />
+              </Button>
+            </div>
+            <p className="mt-2 text-base">
+              Get your business online for just{" "}
+              <span className="font-bold text-yellow-300">UGX 200,000</span>! Includes:
+            </p>
+            <ul className="list-disc list-inside mt-2 text-sm md:text-base">
+              <li>Domain Name (Your Business Name)</li>
+              <li>3 Pages: Home, About, Contact Us</li>
+              <li>Social Media Integration</li>
+              <li>Domain & Hosting for 1 Year</li>
+            </ul>
+            <p className="mt-4">
+              Hurry! Offer ends{" "}
+              <Countdown date={"2025-03-15T23:59:59"} renderer={renderer} />!
+            </p>
+            <Button
+              asChild
+              className="mt-4 bg-yellow-400 text-gray-900 px-6 py-2 rounded-full hover:bg-yellow-500 transition duration-300 w-full"
+            >
+              <Link href="/offer">Claim Offer Now</Link>
+            </Button>
+          </motion.div>
+        </motion.div>
+      )}
+
       {/* Scroll Down Indicator */}
       <motion.div
         className="absolute bottom-1 left-1/2 transform -translate-x-1/2"
@@ -151,4 +218,3 @@ const Hero = () => {
 }
 
 export default Hero
-
