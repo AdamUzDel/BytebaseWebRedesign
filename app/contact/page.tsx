@@ -151,7 +151,7 @@ const ContactPage = () => {
               </CardHeader>
               <CardContent>
                 <h5>BytebaseTech, Kampala, Uganda</h5>
-                <p>First Floor, Room J-406 Nasser Business Center Building, Nasser Rd, Kampala - Uganda</p>
+                <p>Kampala - Uganda</p>
               </CardContent>
             </Card>
             <Card className="bg-gray-700 hover:bg-gray-600 transition-colors duration-300">

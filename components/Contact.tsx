@@ -222,7 +222,7 @@ const ContactPage = () => {
                   <MapPin className="w-6 h-6 text-teal-500 mr-4 mt-1" />
                   <div>
                     <h4 className="font-semibold text-gray-800">Address</h4>
-                    <p className="text-gray-600">First Floor, Room J-406 Nasser Business Center Building, Nasser Rd, Kampala - Uganda</p>
+                    <p className="text-gray-600">Kampala - Uganda</p>
                   </div>
                 </div>
                 <div className="flex items-start">
