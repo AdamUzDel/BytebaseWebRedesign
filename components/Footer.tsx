@@ -53,7 +53,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin size={20} className="mr-2 text-teal-400" />
-                <span className="text-gray-300">First Floor, Room J-406 Nasser Business Center Building, Nasser Rd, Kampala - Uganda</span>
+                <span className="text-gray-300">Kampala - Uganda</span>
               </li>
               <li className="flex items-center">
                 <Phone size={20} className="mr-2 text-teal-400" />

@@ -1,7 +1,7 @@
 // lib/firebaseConfig.ts
 
 import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
@@ -16,4 +16,4 @@ const firebaseConfig = {
 const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export { app, db };
+export { app, db, collection, addDoc };
