@@ -32,7 +32,7 @@ const Offer = () => {
       // Replace with your Formspree endpoint
       const response = await axios.post("https://formspree.io/f/mgvoddqn", {
         ...formData,
-        _subject: "Website Design Offer 200k Submission", // Optional: Customize email subject
+        _subject: "Website Design Offer 700k Submission", // Optional: Customize email subject
       })
 
       if (response.status === 200) {
@@ -66,7 +66,7 @@ const Offer = () => {
         </h1>
         <p className="text-lg text-gray-700">
           Get your small business online for just{" "}
-          <span className="font-bold text-teal-500">UGX 200,000</span>. Offer ends{" "}
+          <span className="font-bold text-teal-500">UGX 700,000</span>. Offer ends{" "}
           <Countdown date={"2025-03-15T23:59:59"} renderer={renderer} />!
         </p>
 

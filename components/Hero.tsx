@@ -136,7 +136,7 @@ const Hero = () => {
             </div>
             <p className="mt-2 text-base">
               Get your business online for just{" "}
-              <span className="font-bold text-yellow-300">UGX 200,000</span>! Includes:
+              <span className="font-bold text-yellow-300">UGX 700,000</span>! Includes:
             </p>
             <ul className="list-disc list-inside mt-2 text-sm md:text-base">
               <li>Domain Name (Your Business Name)</li>
